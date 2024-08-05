@@ -1,6 +1,7 @@
-body{
-  background-color: rgb(9, 9, 65)
+body {
+  background-color: rgb(9, 9, 65);
 }
+
 @font-face {
   font-family: "Memory";
   src: url("./Font/Charm-Bold.ttf");
@@ -9,28 +10,41 @@ body{
   font-family: "MemoryG";
   src: url("./Font/Charm-Regular.ttf");
 }
-#display_flex{
+
+#display_flex {
   display: flex;
+  flex-direction: column; /* Postavi elemente u kolonu */
+  align-items: center; /* Centriraj elemente horizontalno */
 }
-.karta{
-    width: 80px;
-    height: 120px;
-    border-radius: 10px;
-    background-color: rgb(255, 123, 0);
+
+.karta {
+  width: 80px;
+  height: 120px;
+  border-radius: 10px;
+  background-color: rgb(255, 123, 0);
   display: grid;
-  margin: auto;
+  margin: 10px auto; /* Centriraj dugmad i dodaj razmak između */
+  cursor: pointer; /* Promeni kursor na pointer */
 }
-.karta span{
+
+.karta span {
   padding-left: 22px;
   padding-top: 40px;
   font-size: 1.2rem;
   font-family: "MemoryG";
 }
-.karta span:hover{
-  color: darkblue;
+
+.karta:hover {
+  background-color: rgb(0, 123, 255); /* Promeni boju na hover */
+  transform: scale(1.05); /* Uvećaj dugme na hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Glatka tranzicija */
 }
 
-h1{
+.karta span:hover {
+  color: white; /* Promeni boju teksta na hover */
+}
+
+h1 {
   font-size: 3.5rem;
   font-weight: bold;
   font-family: "Memory";
@@ -38,52 +52,77 @@ h1{
   text-align: center;
 }
 
-#ispis{
+.won-message {
+  font-size: 3rem; /* Veličina slova */
+  color: white; /* Boja slova */
+  text-align: center; /* Centrirano */
+  margin: 10px 0; /* Razmak između poruke i dugmadi */
+  display: none; /* Inicijalno skriveno */
+}
+
+#restartContainer {
+  display: flex; /* Koristimo Flexbox za centriranje */
+  flex-direction: column; /* Elementi se postavljaju u kolonu */
+  align-items: center; /* Centriraj elemente horizontalno */
+  margin-top: 10px; /* Razmak između poruke i dugmeta za restart */
+}
+
+#ispis {
   display: grid;
   grid-template-columns: repeat(5, 20%);
   justify-content: space-around;
   margin-left: 23.2%;
   margin-right: 20%;
 }
+
 .card {
-    width: 80px;
-    height: 120px;
-    display: inline-block;
-    perspective: 1000px;
-    position: relative;
-    cursor: pointer;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    transform-origin: center right;
-    margin: 10px;
-    
-  }
-  .card.is-flipped {
-    transform: translateX(-100%) rotateY(-180deg);
-  }
-  .card__face {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    line-height: 260px;
-    border-radius: 10px;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: white;
-    background-color: #3498db;
-  }
-  .card__face img{
-    width: 100%;
-    height: 100%;
-  }
-  .card__face--front {
-    background: rgb(255, 123, 0);
-  }
-  
-  .card__face--back {
-    background: wheat;
-    transform: rotateY( 180deg );
-  }
+  width: 80px;
+  height: 120px;
+  display: inline-block;
+  perspective: 1000px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  margin: 10px;
+}
+
+.card.is-flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 260px;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: white;
+  background-color: #3498db;
+}
+
+.card__face img {
+  width: 100%;
+  height: 100%;
+}
+
+.card__face--front {
+  background: rgb(255, 123, 0);
+}
+
+.card__face--back {
+  background: wheat;
+  transform: rotateY(180deg);
+}
+#restartGame{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
